@@ -18,3 +18,17 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: jb-hello-world-service
+spec:
+  selector:
+    app: spring-boot-k8s  # Matches the label of the pod
+  ports:
+    - protocol: TCP
+      port: 8080         # Expose this port on the load balancer
+      targetPort: 8080  # Port the application listens on inside the container
+  type: LoadBalancer    # Creates an external load balancer
