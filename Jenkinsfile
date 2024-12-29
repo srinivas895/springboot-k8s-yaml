@@ -11,6 +11,7 @@ pipeline {
         DOCKER_USR_NAME = 'arjundevops92'
         DOCKER_PWS = 'Arjun030692@'
         KUBECONFIG = '/root/.kube/config' 
+        TRIVY_REPORT_DIR = 'trivy-reports'
     }
     stages {
         stage('Checkout') {
@@ -55,8 +56,8 @@ pipeline {
     stage('Trivy image scan'){
         steps {
             script {
-                sh "trivy image --format json --output trivy-reports/trivy-report.json arjundevops92/test-repo:v3"
-                archiveArtifacts artifacts: 'trivy-reports/trivy-report.json'
+                sh "trivy image --format json --output ${TRIVY_REPORT_DIR}/trivy-report.json arjundevops92/test-repo:v3"
+                archiveArtifacts artifacts: "${TRIVY_REPORT_DIR}/trivy-report.json"
             }
         }
     }
