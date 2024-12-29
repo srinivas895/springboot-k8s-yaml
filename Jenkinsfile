@@ -71,7 +71,7 @@ pipeline {
     stage('deploy application in eks cluster'){
         steps {
             script {
-                sh "kubectl apply -f deployment.yaml"
+                sh "kubectl delete -f deployment.yaml"
             }
         }
     } 
