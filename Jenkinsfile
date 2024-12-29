@@ -48,14 +48,14 @@ pipeline {
     stage('docker build'){
         steps {
             script {
-                sh "docker build -t arjundevops92/test-repo:v3 ."
+                sh "docker build -t arjundevops92/test-repo:v4 ."
             }
         }
     }
     stage('Trivy image scan'){
         steps {
             script {
-                sh "trivy image --format json --output trivy-report.json arjundevops92/test-repo:v3"
+                sh "trivy image --format json --output trivy-report.json arjundevops92/test-repo:v4"
                 archiveArtifacts artifacts: 'trivy-report.json'
             }
         }
@@ -64,7 +64,7 @@ pipeline {
         steps {
             script {
                 sh "docker login -u ${DOCKER_USR_NAME} -p ${DOCKER_PWS}"
-                sh "docker push arjundevops92/test-repo:v3"
+                sh "docker push arjundevops92/test-repo:v4"
             }
         }
     }
