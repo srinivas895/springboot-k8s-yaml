@@ -8,7 +8,6 @@ pipeline {
     environment {
         SONAR_HOST_URL = 'http://a631849c5f02d4dada69e672a5829841-796493282.us-east-2.elb.amazonaws.com:9000'  // Set your SonarQube URL here
         SONAR_AUTH_TOKEN = 'sqa_275cc93e76e3bc70a4090f006a54bfa80c49103f'  // Set your SonarQube authentication token here
-        SONAR_PROJECT_KEY = 'your-project-key'  // Set your SonarQube project key here
         DOCKER_USR_NAME = 'arjundevops92'
         DOCKER_PWS = 'Arjun030692@'
         KUBECONFIG = '/root/.kube/config' 
